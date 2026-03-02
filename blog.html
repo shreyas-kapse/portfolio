@@ -1,15 +1,160 @@
 ---
 layout: default
-title: Blog
+title: Blog - Shreyas Kapse
 permalink: /blog/
-description: "Latest blog posts on software engineering, Java, microservices, and distributed systems by Shreyas Kapse."
 ---
 
-<h1>Blog Posts</h1>
-<ul>
-{% for post in site.posts %}
-  <li>
-    <a href="{{ post.url | relative_url }}">{{ post.title }}</a> - {{ post.date | date: "%B %d, %Y" }}
-  </li>
-{% endfor %}
-</ul>
+<style>
+  .blog-hero {
+    padding: 120px 0 60px;
+    text-align: center;
+  }
+  .blog-hero .section-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .blog-hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+  }
+  .blog-hero p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .blog-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin: 40px 0;
+  }
+  .filter-tag {
+    padding: 6px 18px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .filter-tag:hover { background: var(--accent); border-color: var(--accent); color: #000; }
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 28px;
+    padding-bottom: 80px;
+  }
+  .blog-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: border-color 0.25s, transform 0.25s;
+    text-decoration: none;
+    color: inherit;
+  }
+  .blog-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+  .blog-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+  }
+  .blog-card-tag {
+    background: rgba(100,220,180,0.1);
+    color: var(--accent);
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 600;
+  }
+  .blog-card h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.45;
+    margin: 0;
+  }
+  .blog-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
+    flex: 1;
+  }
+  .blog-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.82rem;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  /* Featured first post spans full width */
+  .blog-card.featured {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, var(--card-bg) 0%, rgba(100,220,180,0.04) 100%);
+  }
+  .blog-card.featured h2 { font-size: 1.5rem; }
+  .featured-badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 3px 10px;
+    border-radius: 999px;
+    display: inline-block;
+    width: fit-content;
+  }
+</style>
+
+<div class="container">
+  <div class="blog-hero">
+    <span class="section-label">Writing</span>
+    <h1>Articles &amp; Blog Posts</h1>
+    <p>Sharing insights on software engineering, system design, and best practices</p>
+  </div>
+
+  <div class="blog-filters">
+    <a href="/blog/" class="filter-tag">All</a>
+    <a href="/blog/tag/java" class="filter-tag">Java</a>
+    <a href="/blog/tag/system-design" class="filter-tag">System Design</a>
+    <a href="/blog/tag/spring-boot" class="filter-tag">Spring Boot</a>
+    <a href="/blog/tag/backend" class="filter-tag">Backend</a>
+  </div>
+
+  <div class="blog-grid">
+    {% for post in site.posts %}
+    <a href="{{ post.url | prepend: site.baseurl }}" 
+       class="blog-card {% if forloop.first %}featured{% endif %}">
+      {% if forloop.first %}<span class="featured-badge">Featured Post</span>{% endif %}
+      <div class="blog-card-meta">
+        <span class="blog-card-tag">{{ post.category | default: "General" }}</span>
+        <span>{{ post.date | date: "%b %d, %Y" }}</span>
+        <span>{{ post.read_time | default: "5" }} min read</span>
+      </div>
+      <h2>{{ post.title }}</h2>
+      <p>{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
+      <div class="blog-card-footer">
+        Read article →
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
