@@ -7,9 +7,9 @@ description: "Latest blog posts on software engineering, Java, microservices, an
 
 <h1>Blog Posts</h1>
 <ul>
-{% raw %}{% for post in site.posts %}{% endraw %}
+{% for post in site.posts %}
   <li>
     <a href="{{ post.url | relative_url }}">{{ post.title }}</a> - {{ post.date | date: "%B %d, %Y" }}
   </li>
-{% raw %}{% endfor %}{% endraw %}
+{% endfor %}
 </ul>
