@@ -90,6 +90,7 @@ layout: default
         <span>{{ page.date | date: "%B %d, %Y" }}</span>
         <span class="post-dot"></span>
         <span>{{ page.read_time | default: "5" }} min read</span>
+        <meta name="description" content="{{ page.excerpt | strip_html }}">
       </div>
       <h1 class="post-title">{{ page.title }}</h1>
       {% if page.subtitle %}<p class="post-subtitle">{{ page.subtitle }}</p>{% endif %}
