@@ -1,196 +1,112 @@
 ---
 layout: default
 ---
-
 <style>
-  .post-container {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 100px 20px 80px;
+  .blog-actions-bar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; height: 64px;
+    background: rgba(10,10,12,0.92); backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
   }
-  .post-back {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    color: var(--accent);
-    text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 500;
-    margin-bottom: 40px;
-    transition: opacity 0.2s;
-  }
-  .post-back:hover { opacity: 0.7; }
-  .post-header { margin-bottom: 48px; }
-  .post-meta {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-    font-size: 0.82rem;
-    color: var(--text-secondary);
-    margin-bottom: 20px;
-  }
-  .post-tag {
-    background: rgba(100,220,180,0.1);
-    color: var(--accent);
-    padding: 3px 12px;
-    border-radius: 999px;
-    font-size: 0.75rem;
-    font-weight: 600;
-  }
-  .post-title {
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
-    font-weight: 700;
-    color: var(--text-primary);
-    line-height: 1.3;
-    margin: 0 0 16px;
-  }
-  .post-subtitle {
-    font-size: 1.1rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
-  }
-  .post-divider {
-    height: 1px;
-    background: var(--border);
-    margin: 40px 0;
-  }
-  /* Article body typography */
-  .post-body { color: var(--text-secondary); line-height: 1.85; font-size: 1rem; }
-  .post-body h2 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin: 48px 0 16px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid var(--border);
-  }
-  .post-body h3 {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin: 32px 0 12px;
-  }
+  .blog-nav-logo { font-size: 1rem; font-weight: 700; color: #e8e8e8; text-decoration: none; }
+  .blog-nav-links { display: flex; align-items: center; gap: 4px; list-style: none; margin: 0; padding: 0; }
+  .blog-nav-links li a { font-size: 0.82rem; color: rgba(255,255,255,0.5); text-decoration: none; padding: 6px 14px; border-radius: 8px; transition: color 0.2s, background 0.2s; }
+  .blog-nav-links li a:hover { color: #e8e8e8; background: rgba(255,255,255,0.06); }
+  .blog-nav-links li a.active { color: #4ecca3; }
+  .blog-nav-actions { display: flex; align-items: center; gap: 10px; }
+  .btn-portfolio { padding: 7px 16px; border-radius: 8px; font-size: 0.8rem; font-weight: 500; color: rgba(255,255,255,0.65); border: 1px solid rgba(255,255,255,0.12); background: transparent; text-decoration: none; transition: all 0.2s; }
+  .btn-portfolio:hover { color: #e8e8e8; border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.05); }
+  .btn-resume { padding: 7px 16px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; color: #0a0a0c; background: #4ecca3; border: 1px solid #4ecca3; text-decoration: none; transition: all 0.2s; }
+  .btn-resume:hover { background: #3db893; }
+
+  .post-page { padding-top: 64px; min-height: 100vh; background: #0a0a0c; }
+  .post-container { max-width: 740px; margin: 0 auto; padding: 64px 28px 100px; }
+
+  .post-back { display: inline-flex; align-items: center; gap: 7px; color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.82rem; font-weight: 500; margin-bottom: 48px; transition: color 0.2s; padding: 8px 14px; border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; background: rgba(255,255,255,0.025); }
+  .post-back:hover { color: #4ecca3; border-color: rgba(78,204,163,0.3); }
+
+  .post-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; font-size: 0.78rem; color: rgba(255,255,255,0.35); margin-bottom: 22px; }
+  .post-tag { background: rgba(78,204,163,0.1); color: #4ecca3; padding: 3px 12px; border-radius: 999px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+  .post-dot { width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.2); display: inline-block; }
+
+  .post-title { font-size: clamp(1.7rem, 4vw, 2.6rem); font-weight: 700; color: #eaeaea; line-height: 1.28; margin: 0 0 18px; letter-spacing: -0.02em; }
+  .post-subtitle { font-size: 1.05rem; color: rgba(255,255,255,0.45); line-height: 1.65; margin: 0; }
+  .post-divider { height: 1px; background: rgba(255,255,255,0.07); margin: 40px 0; }
+
+  .post-body { color: rgba(255,255,255,0.65); line-height: 1.88; font-size: 1rem; }
+  .post-body h2 { font-size: 1.45rem; font-weight: 700; color: #e0e0e0; margin: 52px 0 16px; letter-spacing: -0.015em; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .post-body h3 { font-size: 1.1rem; font-weight: 600; color: #d0d0d0; margin: 32px 0 12px; }
   .post-body p { margin: 0 0 20px; }
-  .post-body a { color: var(--accent); text-decoration: underline; }
-  .post-body code {
-    background: rgba(255,255,255,0.07);
-    border: 1px solid var(--border);
-    padding: 2px 7px;
-    border-radius: 4px;
-    font-size: 0.88em;
-    font-family: 'Fira Code', 'Courier New', monospace;
+  .post-body a { color: #4ecca3; text-decoration: underline; text-underline-offset: 3px; }
+  .post-body strong { color: #e0e0e0; font-weight: 600; }
+  .post-body code { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); padding: 2px 7px; border-radius: 5px; font-size: 0.87em; font-family: 'Fira Code','JetBrains Mono','Courier New',monospace; color: #a8d8a8; }
+  .post-body pre { background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 22px 26px; overflow-x: auto; margin: 28px 0; }
+  .post-body pre code { background: none; border: none; padding: 0; font-size: 0.88rem; line-height: 1.75; color: #c8e6c9; }
+  .post-body ul, .post-body ol { padding-left: 24px; margin: 0 0 22px; }
+  .post-body li { margin-bottom: 9px; }
+  .post-body blockquote { border-left: 3px solid #4ecca3; padding: 14px 22px; margin: 28px 0; background: rgba(78,204,163,0.05); border-radius: 0 10px 10px 0; color: rgba(255,255,255,0.7); font-style: italic; }
+  .post-body img { width: 100%; border-radius: 12px; border: 1px solid rgba(255,255,255,0.07); margin: 28px 0; }
+
+  .post-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 52px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.07); }
+  .post-tags a { padding: 5px 14px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.45); font-size: 0.78rem; text-decoration: none; transition: all 0.2s; }
+  .post-tags a:hover { border-color: #4ecca3; color: #4ecca3; background: rgba(78,204,163,0.06); }
+
+  .post-author { display: flex; align-items: center; gap: 18px; background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.07); border-radius: 14px; padding: 22px 24px; margin-top: 36px; }
+  .post-author img { width: 52px; height: 52px; border-radius: 50%; border: 2px solid rgba(78,204,163,0.6); object-fit: cover; flex-shrink: 0; }
+  .post-author-info h4 { font-size: 0.95rem; color: #e0e0e0; margin: 0 0 4px; font-weight: 600; }
+  .post-author-info p { font-size: 0.82rem; color: rgba(255,255,255,0.4); margin: 0; }
+
+  @media (max-width: 640px) {
+    .blog-actions-bar { padding: 0 18px; }
+    .blog-nav-links { display: none; }
+    .post-container { padding: 48px 16px 80px; }
   }
-  .post-body pre {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 20px 24px;
-    overflow-x: auto;
-    margin: 24px 0;
-  }
-  .post-body pre code {
-    background: none;
-    border: none;
-    padding: 0;
-    font-size: 0.9rem;
-    line-height: 1.7;
-  }
-  .post-body ul, .post-body ol {
-    padding-left: 24px;
-    margin: 0 0 20px;
-  }
-  .post-body li { margin-bottom: 8px; }
-  .post-body blockquote {
-    border-left: 3px solid var(--accent);
-    padding: 12px 20px;
-    margin: 24px 0;
-    background: rgba(100,220,180,0.04);
-    border-radius: 0 8px 8px 0;
-    color: var(--text-primary);
-    font-style: italic;
-  }
-  .post-body img {
-    width: 100%;
-    border-radius: 10px;
-    border: 1px solid var(--border);
-    margin: 24px 0;
-  }
-  /* Tags footer */
-  .post-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 48px;
-    padding-top: 32px;
-    border-top: 1px solid var(--border);
-  }
-  .post-tags a {
-    padding: 5px 14px;
-    border-radius: 999px;
-    border: 1px solid var(--border);
-    color: var(--text-secondary);
-    font-size: 0.8rem;
-    text-decoration: none;
-    transition: all 0.2s;
-  }
-  .post-tags a:hover { border-color: var(--accent); color: var(--accent); }
-  /* Author card */
-  .post-author {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 24px;
-    margin-top: 40px;
-  }
-  .post-author img {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    border: 2px solid var(--accent);
-    object-fit: cover;
-  }
-  .post-author-info h4 { font-size: 1rem; color: var(--text-primary); margin: 0 0 4px; }
-  .post-author-info p { font-size: 0.85rem; color: var(--text-secondary); margin: 0; }
 </style>
 
-<div class="post-container">
-  <a href="{{ site.baseurl }}/blog/" class="post-back">← Back to Blog</a>
+<header class="blog-actions-bar">
+  <a href="{{ site.baseurl }}/" class="blog-nav-logo">Shreyas.Kapse</a>
+  <ul class="blog-nav-links">
+    <li><a href="{{ site.baseurl }}/#about">About</a></li>
+    <li><a href="{{ site.baseurl }}/#experience">Experience</a></li>
+    <li><a href="{{ site.baseurl }}/#projects">Projects</a></li>
+    <li><a href="{{ site.baseurl }}/#contact">Contact</a></li>
+    <li><a href="{{ site.baseurl }}/blog/" class="active">Blog</a></li>
+  </ul>
+  <div class="blog-nav-actions">
+    <a href="{{ site.baseurl }}/" class="btn-portfolio">← Portfolio</a>
+    <a href="https://drive.google.com/file/d/1bFeQZL37cWuU8wRzda0FqqzYkP9_eYf6/view?usp=sharing"
+       target="_blank" rel="noopener" class="btn-resume">📄 Resume</a>
+  </div>
+</header>
 
-  <header class="post-header">
-    <div class="post-meta">
-      <span class="post-tag">{{ page.category | default: "General" }}</span>
-      <span>{{ page.date | date: "%B %d, %Y" }}</span>
-      <span>{{ page.read_time | default: "5" }} min read</span>
+<div class="post-page">
+  <div class="post-container">
+    <a href="{{ site.baseurl }}/blog/" class="post-back">← Back to Blog</a>
+    <header>
+      <div class="post-meta">
+        <span class="post-tag">{{ page.category | default: "General" }}</span>
+        <span class="post-dot"></span>
+        <span>{{ page.date | date: "%B %d, %Y" }}</span>
+        <span class="post-dot"></span>
+        <span>{{ page.read_time | default: "5" }} min read</span>
+      </div>
+      <h1 class="post-title">{{ page.title }}</h1>
+      {% if page.subtitle %}<p class="post-subtitle">{{ page.subtitle }}</p>{% endif %}
+    </header>
+    <div class="post-divider"></div>
+    <div class="post-body">{{ content }}</div>
+    {% if page.tags %}
+    <div class="post-tags">
+      {% for tag in page.tags %}<a href="{{ site.baseurl }}/blog/">#{{ tag }}</a>{% endfor %}
     </div>
-    <h1 class="post-title">{{ page.title }}</h1>
-    {% if page.subtitle %}
-    <p class="post-subtitle">{{ page.subtitle }}</p>
     {% endif %}
-  </header>
-
-  <div class="post-divider"></div>
-
-  <div class="post-body">
-    {{ content }}
-  </div>
-
-  {% if page.tags %}
-  <div class="post-tags">
-    {% for tag in page.tags %}
-    <a href="{{ site.baseurl }}/blog/tag/{{ tag | slugify }}">{{ tag }}</a>
-    {% endfor %}
-  </div>
-  {% endif %}
-
-  <div class="post-author">
-    <img src="{{ site.baseurl }}/img/shreyas_kapse_profile_image.png" alt="Shreyas Kapse" />
-    <div class="post-author-info">
-      <h4>Shreyas Kapse</h4>
-      <p>Software Engineer · Spring Boot · Microservices · Backend Systems</p>
+    <div class="post-author">
+      <img src="{{ site.baseurl }}/img/shreyas_kapse_profile_image.png" alt="Shreyas Kapse" />
+      <div class="post-author-info">
+        <h4>Shreyas Kapse</h4>
+        <p>Software Engineer · Spring Boot · Microservices · Distributed Systems</p>
+      </div>
     </div>
   </div>
 </div>

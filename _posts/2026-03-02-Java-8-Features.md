@@ -1,11 +1,15 @@
 ---
 layout: post
-title: "Java 8 Features: A Complete Guide for Modern Java Developers"
-date: 2026-03-02
-description: "Explore major Java 8 features such as lambda expressions, Streams API, Optional, and the new Date/Time API to write modern, efficient Java code."
-categories: blog
-keywords: [Java 8, lambda, streams, Optional, Java tutorial]
+title: "Filter, Map & Reduce — The Superpowers of Java 8 Streams"
+subtitle: "How three operations transform the way you process data in Java"
+date: 2024-12-01
+category: Java
+read_time: 6
+tags: [java, backend, functional-programming]
+excerpt: "Deep dive into Java 8's most powerful Stream operations. Learn how filter, map, and reduce eliminate boilerplate and make your data pipelines expressive."
 ---
+
+Java 8 Streams changed the game...
 
 # Java 8 Features: A Complete Guide for Modern Java Developers
 
