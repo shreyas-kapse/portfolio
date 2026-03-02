@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://shreyas-kapse.github.io/portfolio/</loc>
-    <lastmod>2025-11-25</lastmod>
+    <loc>{{ site.url }}{{ site.baseurl }}/</loc>
+    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
   </url>
-  <!-- more urls -->
+  {% for page in site.pages %}
+    {% unless page.url contains "/assets/" or page.url contains "/img/" %}
+  <url>
+    <loc>{{ site.url }}{{ page.url }}</loc>
+    <lastmod>{{ page.date | default: site.time | date_to_xmlschema }}</lastmod>
+  </url>
+    {% endunless %}
+  {% endfor %}
+  {% for post in site.posts %}
+  <url>
+    <loc>{{ site.url }}{{ post.url }}</loc>
+    <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
+  </url>
+  {% endfor %}
 </urlset>

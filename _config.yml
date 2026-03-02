@@ -1,0 +1,20 @@
+# Basic Jekyll configuration for portfolio site
+
+title: "Shreyas Kapse Portfolio"
+description: "Personal portfolio and blog of Shreyas Kapse, software engineer specializing in backend systems, Java, Spring Boot, and distributed architectures."
+baseurl: "/portfolio"   # change if repository name differs
+url: "https://shreyas-kapse.github.io"
+author:
+  name: "Shreyas Kapse"
+twitter_username: "shreyas_kapse"  # replace with actual if available
+image: "/img/shreyas_kapse_profile_image.png"  # fallback OG/Twitter image
+
+# do not use any theme since we have custom HTML
+# theme: minima
+
+# tell Jekyll to process the _posts directory
+collections:
+  posts:
+    output: true
+
+# any other settings can go here
