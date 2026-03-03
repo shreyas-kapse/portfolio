@@ -74,7 +74,7 @@ Example: EmpID → EmpName
 
 -   Must be in BCNF.
 -   No multivalued dependency.
-![alt text](image.png)
+![Normalization Image](/portfolio/assets/images/dbms_normalization.png)
 
 ------------------------------------------------------------------------
 
@@ -94,7 +94,7 @@ Foreign Key : References the primary key of another table.
 Composite Key : Primary key consisting of multiple attributes.
 
 Alternate Key : Candidate keys not selected as primary key.
-![alt text](keys_in_dbms.png)
+![DBMS Keys Image](/portfolio/assets/images/keys_in_dbms.png)
 ------------------------------------------------------------------------
 
 Master DBMS step by step with this structured series.
