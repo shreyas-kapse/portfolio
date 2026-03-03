@@ -15,21 +15,13 @@ title: ACID Properties, Normalization (1NF–4NF) & Keys in DBMS Explained Clear
 
 ACID ensures reliable database transactions.
 
-## Atomicity
+Atomicity : A transaction must either complete entirely or not execute at all.
 
-A transaction must either complete entirely or not execute at all.
+Consistency : The database must remain valid before and after the transaction.
 
-## Consistency
+Isolation : Multiple transactions execute independently without interference.
 
-The database must remain valid before and after the transaction.
-
-## Isolation
-
-Multiple transactions execute independently without interference.
-
-## Durability
-
-Once a transaction is committed, it remains permanent even after a
+Durability : Once a transaction is committed, it remains permanent even after a
 system crash.
 
 ------------------------------------------------------------------------
@@ -82,6 +74,7 @@ Example: EmpID → EmpName
 
 -   Must be in BCNF.
 -   No multivalued dependency.
+![alt text](image.png)
 
 ------------------------------------------------------------------------
 
@@ -90,30 +83,18 @@ Example: EmpID → EmpName
 Keys are used to uniquely identify records and establish relationships
 between tables.
 
-## Primary Key
+Primary Key : Unique and not null.
 
-Unique and not null.
+Candidate Key : Attribute(s) that can uniquely identify a record.
 
-## Candidate Key
+Super Key : A set of attributes that uniquely identify records.
 
-Attribute(s) that can uniquely identify a record.
+Foreign Key : References the primary key of another table.
 
-## Super Key
+Composite Key : Primary key consisting of multiple attributes.
 
-A set of attributes that uniquely identify records.
-
-## Foreign Key
-
-References the primary key of another table.
-
-## Composite Key
-
-Primary key consisting of multiple attributes.
-
-## Alternate Key
-
-Candidate keys not selected as primary key.
-
+Alternate Key : Candidate keys not selected as primary key.
+![alt text](keys_in_dbms.png)
 ------------------------------------------------------------------------
 
 Master DBMS step by step with this structured series.
