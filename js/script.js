@@ -44,6 +44,7 @@ const sections = document.querySelectorAll("section[id]");
 
 function updateActiveNav() {
     const scrollY = window.pageYOffset;
+    let matched = false;
 
     sections.forEach((section) => {
         const sectionHeight = section.offsetHeight;
@@ -51,15 +52,18 @@ function updateActiveNav() {
         const sectionId = section.getAttribute("id");
         const navLink = document.querySelector(`nav a[href="#${sectionId}"]`);
 
-        if (
-            navLink &&
-            scrollY > sectionTop &&
-            scrollY <= sectionTop + sectionHeight
-        ) {
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
             navLinks.forEach((link) => link.classList.remove("active"));
-            navLink.classList.add("active");
+            if (navLink) {
+                navLink.classList.add("active");
+                matched = true;
+            }
         }
     });
+
+    if (!matched) {
+        navLinks.forEach((link) => link.classList.remove("active"));
+    }
 }
 
 window.addEventListener("scroll", updateActiveNav);
