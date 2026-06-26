@@ -4,17 +4,16 @@ date: 2026-05-26
 excerpt: LangChain Explained - Building LLM Applications the Right Way
 layout: post
 read_time: 4
-subtitle: Understand langchain and core compoments of langchain, building blocks of langchain
+subtitle: Understand building blocks and core compoments of langchain
 tags: [AI, langchain, interviews]
 title: LangChain Explained - Building LLM Applications the Right Way
 ---
 # LangChain Explained: Building LLM Applications the Right Way
 
-If you've been exploring the world of large language models, you've probably hit the same wall I did — raw API calls get messy fast. You need memory, retrieval, tool usage, dynamic prompts, and suddenly you're duct-taping everything together. That's exactly the problem **LangChain** was built to solve.
+If you've been exploring the world of large language models, you've probably hit the same wall I did raw API calls get messy fast. You need memory, retrieval, tool usage, dynamic prompts, and suddenly you're duct-taping everything together. That's exactly the problem **LangChain** was built to solve.
 
-This post breaks down everything you need to know — from core concepts to advanced patterns like LCEL and RAG — based on my hands-on learning notes.
+This post breaks down everything you need to know from core concepts to advanced patterns like LCEL and RAG, based on my hands-on learning notes.
 
----
 
 ## What Is LangChain?
 
@@ -27,7 +26,7 @@ LangChain is an open-source framework for building LLM-powered applications. It 
 
 The core value prop: **model-agnostic development**. You write your business logic once, swap the underlying LLM, and it still works.
 
----
+![alt text](blog_images/langchain_architecture.png)
 
 ## Core Components
 
@@ -55,6 +54,8 @@ You can also do **few-shot prompting** — show the model examples before asking
 - `HumanMessage` — the user's input
 - `AIMessage` — the model's response
 
+![alt text](blog_images/message_types.png)
+
 ### 3. Memory
 
 Every LLM API call is stateless by default. Each request knows nothing about the previous one. Memory fixes this.
@@ -65,6 +66,7 @@ Every LLM API call is stateless by default. Each request knows nothing about the
 | **Buffer Window Memory** | Keeps only the last N interactions to control token usage. |
 | **Summary Memory** | Periodically compresses older messages into summaries. |
 | **Custom Memory** | Store arbitrary state — user preferences, key facts, session data. |
+![alt text](blog_images/memory_types.png)
 
 ### 4. Indexes (External Knowledge)
 
@@ -74,12 +76,12 @@ This is the foundation of RAG. LangChain gives you a pipeline to connect your ap
 2. **Text Splitters** — chunk documents into manageable pieces
 3. **Vector Stores** — store and search embeddings
 4. **Retrievers** — fetch the most relevant chunks at query time
+![alt text](blog_images/indexing_pipeline.png)
 
 ### 5. Agents
 
 Agents are the next level: a chatbot with the ability to take actions on its own. They decide which tools to call, in what order, based on the user's query — without being hardcoded to a fixed flow.
-
----
+![alt text](blog_images/agents.png)
 
 ## Temperature: Controlling Randomness
 
@@ -90,7 +92,7 @@ Temperature is a parameter you'll tune constantly.
 
 At temperature `0`, you get the same output every time. As you increase it, outputs diverge.
 
----
+
 
 ## Structured Output
 
@@ -98,7 +100,7 @@ Sometimes you don't want a natural language response — you want JSON, a typed 
 
 A pattern I use often: define a `TypedDict` to specify the exact keys and value types the model should return, then wire it into an output parser. Think of it like a schema — similar to defining a class in Java.
 
----
+![alt text](blog_images/output_parser.png)
 
 ## Runnables and LCEL
 
@@ -133,7 +135,7 @@ result = chain.invoke({"question": "What is RAG?"})
 
 Think of runnables as LEGO blocks. Each piece has the same interface, so they compose cleanly into any shape your workflow needs.
 
----
+![alt text](blog_images/runnables.png)
 
 ## RAG: Retrieval-Augmented Generation
 
@@ -168,13 +170,13 @@ LLM generates a grounded answer
 
 **Semantic search** powers the retrieval step — your query is embedded into the same vector space as the documents, and the closest matches are returned.
 
----
+![alt text](blog_images/rag_pipeline.png)
 
 ## Open Source Models
 
 You're not locked into OpenAI. The open-source ecosystem (hosted primarily on **Hugging Face**) gives you models you can download, fine-tune, and self-host without restrictions. LangChain supports these seamlessly — swap the model object and everything else stays the same.
 
----
+
 
 ## Putting It Together
 
@@ -188,7 +190,7 @@ LangChain's real power shows when you combine these pieces:
 
 That's a production-grade RAG pipeline — and with LCEL, it's readable in under 20 lines.
 
----
+
 
 ## Takeaways
 
@@ -202,6 +204,6 @@ If you're building anything serious on top of LLMs:
 
 LangChain gives you the scaffolding. The architecture decisions are still yours.
 
----
+
 
 *If you're working on LLM applications or have questions about any of these patterns, feel free to reach out.*
