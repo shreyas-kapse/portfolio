@@ -26,7 +26,7 @@ LangChain is an open-source framework for building LLM-powered applications. It 
 
 The core value prop: **model-agnostic development**. You write your business logic once, swap the underlying LLM, and it still works.
 
-![alt text](blog_images/langchain_architecture.png)
+![alt text](https://github.com/shreyas-kapse/portfolio/blob/master/_posts/blog_images/langchain_architecture.png)
 
 ## Core Components
 
@@ -54,7 +54,7 @@ You can also do **few-shot prompting** — show the model examples before asking
 - `HumanMessage` — the user's input
 - `AIMessage` — the model's response
 
-![alt text](blog_images/message_types.png)
+![alt text](https://github.com/shreyas-kapse/portfolio/blob/master/_posts/blog_images/message_types.png)
 
 ### 3. Memory
 
@@ -66,7 +66,7 @@ Every LLM API call is stateless by default. Each request knows nothing about the
 | **Buffer Window Memory** | Keeps only the last N interactions to control token usage. |
 | **Summary Memory** | Periodically compresses older messages into summaries. |
 | **Custom Memory** | Store arbitrary state — user preferences, key facts, session data. |
-![alt text](blog_images/memory_types.png)
+![alt text](https://github.com/shreyas-kapse/portfolio/blob/master/_posts/blog_images/message_types.png)
 
 ### 4. Indexes (External Knowledge)
 
@@ -76,12 +76,12 @@ This is the foundation of RAG. LangChain gives you a pipeline to connect your ap
 2. **Text Splitters** — chunk documents into manageable pieces
 3. **Vector Stores** — store and search embeddings
 4. **Retrievers** — fetch the most relevant chunks at query time
-![alt text](blog_images/indexing_pipeline.png)
+![alt text](https://github.com/shreyas-kapse/portfolio/blob/master/_posts/blog_images/indexing_pipeline.png)
 
 ### 5. Agents
 
 Agents are the next level: a chatbot with the ability to take actions on its own. They decide which tools to call, in what order, based on the user's query — without being hardcoded to a fixed flow.
-![alt text](blog_images/agents.png)
+![alt text](https://github.com/shreyas-kapse/portfolio/blob/master/_posts/blog_images/agents.png)
 
 ## Temperature: Controlling Randomness
 
@@ -100,7 +100,7 @@ Sometimes you don't want a natural language response — you want JSON, a typed 
 
 A pattern I use often: define a `TypedDict` to specify the exact keys and value types the model should return, then wire it into an output parser. Think of it like a schema — similar to defining a class in Java.
 
-![alt text](blog_images/output_parser.png)
+![alt text](https://github.com/shreyas-kapse/portfolio/blob/master/_posts/blog_images/output_parser.png)
 
 ## Runnables and LCEL
 
@@ -135,7 +135,7 @@ result = chain.invoke({"question": "What is RAG?"})
 
 Think of runnables as LEGO blocks. Each piece has the same interface, so they compose cleanly into any shape your workflow needs.
 
-![alt text](blog_images/runnables.png)
+![alt text](https://github.com/shreyas-kapse/portfolio/blob/master/_posts/blog_images/runnables.png)
 
 ## RAG: Retrieval-Augmented Generation
 
@@ -170,7 +170,7 @@ LLM generates a grounded answer
 
 **Semantic search** powers the retrieval step — your query is embedded into the same vector space as the documents, and the closest matches are returned.
 
-![alt text](blog_images/rag_pipeline.png)
+![alt text](https://github.com/shreyas-kapse/portfolio/blob/master/_posts/blog_images/rag_pipeline.png)
 
 ## Open Source Models
 
