@@ -260,50 +260,7 @@ production backend infrastructure."
       </div>
       <div class="projects-grid">
 
-        <div class="project-item fade-in">
-          <div class="project-info">
-            <h3>YouTube RAG Bot – AI Video Q&A System</h3>
-            <p class="project-tech">
-              Python · LangChain · FastAPI · Qdrant · BM25 · HuggingFace · LangSmith · RAGAS · Chrome Extension
-            </p>
-            <p class="project-description">
-              RAG pipeline over YouTube transcripts using hybrid retrieval (BM25 + dense
-              vector search), query expansion, and cross-encoder reranking. Delivers
-              timestamp-grounded answers via a Chrome Extension embedded in YouTube UI.
-              Evaluated with RAGAS (Faithfulness: 0.75, Relevancy: 0.71) and traced
-              end-to-end via LangSmith.
-            </p>
-            <div class="project-links">
-              <a href="https://github.com/shreyas-kapse/youtube_bot" target="_blank">
-                <i class="fab fa-github"></i> View Code
-              </a>
-            </div>
-          </div>
-          <div class="project-metrics">
-            <div class="metric">
-              <div class="metric-icon"><i class="fas fa-brain"></i></div>
-              <div>
-                <div class="metric-label">Retrieval</div>
-                <div class="metric-value">Hybrid BM25 + Semantic Search + Reranking</div>
-              </div>
-            </div>
-            <div class="metric">
-              <div class="metric-icon"><i class="fas fa-chart-bar"></i></div>
-              <div>
-                <div class="metric-label">Evaluation</div>
-                <div class="metric-value">RAGAS · Faithfulness 0.75 · Relevancy 0.71</div>
-              </div>
-            </div>
-            <div class="metric">
-              <div class="metric-icon"><i class="fab fa-chrome"></i></div>
-              <div>
-                <div class="metric-label">Extension</div>
-                <div class="metric-value">Chrome Extension with Timestamp Jump UI</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
+        <!-- AI PR Reviewer -->
         <div class="project-item fade-in">
           <div class="project-info">
             <h3>AI PR Reviewer – Multi-Agent GitHub Code Review System</h3>
@@ -348,6 +305,130 @@ production backend infrastructure."
           </div>
         </div>
 
+<!-- YouTube RAG Bot -->
+        <div class="project-item fade-in">
+          <div class="project-info">
+            <h3>YouTube RAG Bot – AI Video Q&A System</h3>
+            <p class="project-tech">
+              Python · LangChain · FastAPI · Qdrant · BM25 · HuggingFace · LangSmith · RAGAS · Chrome Extension
+            </p>
+            <p class="project-description">
+              RAG pipeline over YouTube transcripts using hybrid retrieval (BM25 + dense
+              vector search), query expansion, and cross-encoder reranking. Delivers
+              timestamp-grounded answers via a Chrome Extension embedded in YouTube UI.
+              Evaluated with RAGAS (Faithfulness: 0.75, Relevancy: 0.71) and traced
+              end-to-end via LangSmith.
+            </p>
+            <div class="project-links">
+              <a href="https://github.com/shreyas-kapse/youtube_bot" target="_blank">
+                <i class="fab fa-github"></i> View Code
+              </a>
+            </div>
+          </div>
+          <div class="project-metrics">
+            <div class="metric">
+              <div class="metric-icon"><i class="fas fa-brain"></i></div>
+              <div>
+                <div class="metric-label">Retrieval</div>
+                <div class="metric-value">Hybrid BM25 + Semantic Search + Reranking</div>
+              </div>
+            </div>
+            <div class="metric">
+              <div class="metric-icon"><i class="fas fa-chart-bar"></i></div>
+              <div>
+                <div class="metric-label">Evaluation</div>
+                <div class="metric-value">RAGAS · Faithfulness 0.75 · Relevancy 0.71</div>
+              </div>
+            </div>
+            <div class="metric">
+              <div class="metric-icon"><i class="fab fa-chrome"></i></div>
+              <div>
+                <div class="metric-label">Extension</div>
+                <div class="metric-value">Chrome Extension with Timestamp Jump UI</div>
+              </div>
+            </div>
+          </div>
+        </div>
+<!-- Support Ticket → KB Matcher -->
+        <div class="project-item fade-in">
+          <div class="project-info">
+            <h3>Support Ticket → KB Matcher – Semantic Search for Support Automation</h3>
+            <p class="project-tech">
+              Python · TF-IDF · Sentence Transformers · FAISS · Hybrid Retrieval
+            </p>
+            <p class="project-description">
+              Semantic search system that matches support tickets to relevant knowledge-base articles using hybrid retrieval (TF-IDF + dense embeddings with FAISS). Achieves 86.25% Top-1 accuracy and 99.83% Recall@5, validated with a leakage-free train/tune/test split and standard ranking metrics.
+            </p>
+            <div class="project-links">
+              <a href="https://github.com/shreyas-kapse/support-ticket-to-kbt" target="_blank">
+                <i class="fab fa-github"></i> View Code
+              </a>
+            </div>
+          </div>
+          <div class="project-metrics">
+            <div class="metric">
+              <div class="metric-icon"><i class="fas fa-brain"></i></div>
+              <div>
+                <div class="metric-label">Retrieval</div>
+                <div class="metric-value">Hybrid TF-IDF + Semantic Search (FAISS)</div>
+              </div>
+            </div>
+            <div class="metric">
+              <div class="metric-icon"><i class="fas fa-chart-bar"></i></div>
+              <div>
+                <div class="metric-label">Accuracy</div>
+                <div class="metric-value">Top-1 86.25% · Recall@5 99.83%</div>
+              </div>
+            </div>
+            <div class="metric">
+              <div class="metric-icon"><i class="fab fa-chrome"></i></div>
+              <div>
+                <div class="metric-label">Evaluation</div>
+                <div class="metric-value">Leakage-Free Train/Tune/Test Split</div>
+              </div>
+            </div>
+          </div>
+        </div>
+<!-- LORA fine tune -->
+        <div class="project-item fade-in">
+          <div class="project-info">
+            <h3>DistilBERT + LoRA Fine-Tuning Benchmark – Parameter-Efficient Fine-Tuning</h3>
+            <p class="project-tech">
+              Python · DistilBERT · LoRA · PEFT · HuggingFace · PyTorch
+            </p>
+            <p class="project-description">
+              Benchmark comparing LoRA-based parameter-efficient fine-tuning against full fine-tuning on SMS spam classification. Reaches 99.42% accuracy while training only 1.73% of the model's parameters.
+            </p>
+            <div class="project-links">
+              <a href="https://github.com/shreyas-kapse/peft-sms-spam-classification" target="_blank">
+                <i class="fab fa-github"></i> View Code
+              </a>
+            </div>
+          </div>
+          <div class="project-metrics">
+            <div class="metric">
+              <div class="metric-icon"><i class="fas fa-brain"></i></div>
+              <div>
+                <div class="metric-label">Method</div>
+                <div class="metric-value">LoRA / PEFT vs. Full Fine-Tuning</div>
+              </div>
+            </div>
+            <div class="metric">
+              <div class="metric-icon"><i class="fas fa-chart-bar"></i></div>
+              <div>
+                <div class="metric-label">Accuracy</div>
+                <div class="metric-value">99.42% on SMS Spam Classification</div>
+              </div>
+            </div>
+            <div class="metric">
+              <div class="metric-icon"><i class="fab fa-chrome"></i></div>
+              <div>
+                <div class="metric-label">Efficiency</div>
+                <div class="metric-value">Only 1.73% of Parameters Trained</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -521,7 +602,7 @@ production backend infrastructure."
           <i class="fas fa-envelope"></i>
         </a>
       </div>
-      <p>© 2025 Shreyas Kapse. All rights reserved.</p>
+      <p>© 2026 Shreyas Kapse. All rights reserved.</p>
       <p style="margin-top: 0.5rem;">Built with attention to detail and clean code principles.</p>
     </div>
   </footer>
